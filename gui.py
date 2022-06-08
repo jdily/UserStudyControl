@@ -24,7 +24,7 @@ class Gui(QMainWindow):
         self.setWindowTitle("Viewer")
 
         self.shape_selector = QtWidgets.QComboBox(self)
-        self.shape_selector.addItems(['bench', 'chair', 'sofa', 'table'])
+        self.shape_selector.addItems(['bench', 'chair'])
         self.refresh_button = QtWidgets.QPushButton(self)
         self.refresh_button.setText('Refresh')
         self.summary_pane = ClickableLabel(self)

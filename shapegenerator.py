@@ -9,8 +9,6 @@ class ShapeGenerator:
         self.params = dict()
         self.params['bench'] = [None]*50
         self.params['chair'] = [None]*50
-        self.params['sofa'] = [None]*50
-        self.params['table'] = [None]*50
 
         self.params['bench'][1] = [193, 0.5, 24, 22, 5, 0]
         self.params['bench'][38] = [155, 0.5, 10, 14, 4, 0]

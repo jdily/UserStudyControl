@@ -16,11 +16,11 @@ class Controller:
     def initialize(self):
         reload(shapegenerator)
         self.generator = shapegenerator.ShapeGenerator()
-        self.true_images = {'bench': [], 'chair': [], 'sofa': [], 'table': []}
-        self.pred_images = {'bench': [], 'chair': [], 'sofa': [], 'table': []}
+        self.true_images = {'bench': [], 'chair': []}
+        self.pred_images = {'bench': [], 'chair': []}
         self.summary_images = {}
 
-        for shape in ['bench', 'chair', 'sofa', 'table']:
+        for shape in ['bench', 'chair']:
             summary_img = Image.new('RGB', (640, 640))
             for i in range(5):
                 for j in range(10):
