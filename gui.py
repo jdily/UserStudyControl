@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtGui import QImage, QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow
 from controller import Controller
 
@@ -27,6 +27,7 @@ class Gui(QMainWindow):
         self.shape_selector.addItems(['bench', 'chair'])
         self.refresh_button = QtWidgets.QPushButton(self)
         self.refresh_button.setText('Refresh')
+        self.refresh_button.setIcon(QIcon('refresh.png'))
         self.summary_pane = ClickableLabel(self)
         self.true_img_pane = QtWidgets.QLabel(self)
         self.pred_img_pane = QtWidgets.QLabel(self)
@@ -34,12 +35,12 @@ class Gui(QMainWindow):
         self.pred_legend = QtWidgets.QLabel(self)
 
         self.shape_selector.move(50, 50)
-        self.refresh_button.move(160,50)
+        self.refresh_button.move(970, 50)
         self.summary_pane.move(1090, 50)
-        self.true_img_pane.move(50, 100)
-        self.pred_img_pane.move(570, 100)
-        self.true_legend.move(280, 620)
-        self.pred_legend.move(790, 620)
+        self.true_img_pane.move(50, 130)
+        self.pred_img_pane.move(570, 130)
+        self.true_legend.move(280, 650)
+        self.pred_legend.move(790, 650)
 
         self.shape_selector.activated[str].connect(self.show_summary)
         self.refresh_button.clicked.connect(self.refresh)
