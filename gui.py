@@ -27,7 +27,7 @@ class Gui(QMainWindow):
         self.shape_selector.addItems(['bench', 'chair'])
         self.refresh_button = QtWidgets.QPushButton(self)
         self.refresh_button.setText('Refresh')
-        self.refresh_button.setIcon(QIcon('refresh.png'))
+        self.refresh_button.setIcon(QIcon('assets/refresh.png'))
         self.summary_pane = ClickableLabel(self)
         self.true_img_pane = QtWidgets.QLabel(self)
         self.pred_img_pane = QtWidgets.QLabel(self)

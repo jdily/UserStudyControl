@@ -9,9 +9,6 @@ class Drawer(ImageDraw):
     def arc(self, xy, start, end):
         super().arc(xy, start, end, fill=self.fill, width=1)
 
-    def bitmap(self, xy, bitmap):
-        super().bitmap(xy, bitmap, fill=self.fill)
-
     def chord(self, xy, start, end):
         super().chord(xy, start, end, fill=self.fill, outline=None, width=1)
 
@@ -20,9 +17,6 @@ class Drawer(ImageDraw):
 
     def line(self, xy):
         super().line(xy, fill=self.fill, width=0, joint=None)
-
-    def shape(self, shape):
-        super().shape(shape, fill=self.fill, outline=None)
 
     def pieslice(self, xy, start, end):
         super().pieslice(xy, start, end, fill=self.fill, outline=None, width=1)
