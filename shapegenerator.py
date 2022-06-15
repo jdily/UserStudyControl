@@ -10,9 +10,14 @@ class ShapeGenerator:
         self.params['bench'] = [None]*50
         self.params['chair'] = [None]*50
 
-        self.params['bench'][1] = [193, 0.5, 24, 22, 5, 0]
-        self.params['bench'][38] = [155, 0.5, 10, 14, 4, 0]
-        self.params['bench'][44] = [205, 0.55, 10, 14, 13, 1]
+        # As example, parameter vectors for the bench class are specified between here
+        self.params['bench'][1] = [0.375, 0.19, 0.045, 0.04, 5, 0]
+        self.params['bench'][38] = [0.3, 0.145, 0.02, 0.025, 4, 0]
+        self.params['bench'][44] = [0.4, 0.22, 0.02, 0.03, 12, 1]
+        # and here
+
+        # Specify your own parameter vectors for the chair class between here
+        # and here
 
     def get_image(self, shape_name: str, index: int):
         '''
