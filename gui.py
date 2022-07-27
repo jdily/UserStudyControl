@@ -20,7 +20,7 @@ class Gui(QMainWindow):
 
         self.controller = Controller()
 
-        self.setFixedSize(1800, 800)
+        self.setFixedSize(1744, 660)
         self.setWindowTitle("Viewer")
 
         self.shape_selector = QtWidgets.QComboBox(self)
@@ -34,13 +34,13 @@ class Gui(QMainWindow):
         self.true_legend = QtWidgets.QLabel(self)
         self.pred_legend = QtWidgets.QLabel(self)
 
-        self.shape_selector.move(50, 50)
-        self.refresh_button.move(970, 50)
-        self.summary_pane.move(1090, 50)
-        self.true_img_pane.move(50, 130)
-        self.pred_img_pane.move(570, 130)
-        self.true_legend.move(280, 650)
-        self.pred_legend.move(790, 650)
+        self.shape_selector.move(10, 10)
+        self.refresh_button.move(945, 10)
+        self.summary_pane.move(1054, 10)
+        self.true_img_pane.move(10, 70)
+        self.pred_img_pane.move(532, 70)
+        self.true_legend.move(240, 585)
+        self.pred_legend.move(760, 585)
 
         self.shape_selector.activated[str].connect(self.show_summary)
         self.refresh_button.clicked.connect(self.refresh)
@@ -48,9 +48,15 @@ class Gui(QMainWindow):
         self.show()
         self.show_summary()
 
-    def __pil_to_pixmap(self, img):
+    def __pil_to_rgb_pixmap(self, img):
         data = img.tobytes('raw', 'RGB')
         qim = QImage(data, img.size[0], img.size[1], QImage.Format_RGB888)
+        pixmap = QPixmap.fromImage(qim)
+        return pixmap
+
+    def __pil_to_rgba_pixmap(self, img):
+        data = img.tobytes('raw', 'RGBA')
+        qim = QImage(data, img.size[0], img.size[1], QImage.Format_ARGB32)
         pixmap = QPixmap.fromImage(qim)
         return pixmap
 
@@ -61,7 +67,7 @@ class Gui(QMainWindow):
     def show_summary(self):
         shape_name = self.shape_selector.currentText()
         summary_img = self.controller.get_summary(shape_name)
-        pixmap = self.__pil_to_pixmap(summary_img)
+        pixmap = self.__pil_to_rgba_pixmap(summary_img)
         self.summary_pane.setPixmap(pixmap)
         self.summary_pane.adjustSize()
         self.true_img_pane.clear()
@@ -71,10 +77,14 @@ class Gui(QMainWindow):
 
     def show_details(self, pos):
         shape_name = self.shape_selector.currentText()
-        index = str(pos.y()//128) + str(pos.x()//64)
+        i = pos.x()//138
+        j = pos.y()//64
+        if pos.x() > i*138 + 128:
+            return
+        index = str(i) + str(j)
         true_img, pred_img = self.controller.get_details(shape_name, int(index))
-        true_pixmap = self.__pil_to_pixmap(true_img)
-        pred_pixmap = self.__pil_to_pixmap(pred_img)
+        true_pixmap = self.__pil_to_rgb_pixmap(true_img)
+        pred_pixmap = self.__pil_to_rgb_pixmap(pred_img)
         self.true_img_pane.setPixmap(true_pixmap)
         self.pred_img_pane.setPixmap(pred_pixmap)
         self.true_img_pane.adjustSize()

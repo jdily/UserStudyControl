@@ -7,9 +7,9 @@ def quit_program(message: str):
 
 
 class Parameter:
-    def __init__(self, param_name: str, param_type: str, min_value=None, max_value=None, num_levels: int = None):
+    def __init__(self, param_name: str, param_type: str, min_value=None, max_value=None):
         if param_type == 's':
-            if min_value is None or max_value is None or num_levels is None:
+            if min_value is None or max_value is None:
                 quit_program('Scalar parameter requires additional specification')
         else:
             if param_type == 'b':
@@ -25,8 +25,7 @@ class Parameter:
             'param_name': param_name,
             'param_type': param_type,
             'min_value': min_value,
-            'max_value': max_value,
-            'num_levels': num_levels
+            'max_value': max_value
         }
 
 
@@ -34,10 +33,10 @@ class Shape:
     def __init__(self, shape_name: str):
         self.params = []
         if shape_name == 'bench':
-            self.params.append(Parameter('height', 's', 0.293, 0.43, 3))
-            self.params.append(Parameter('leg_height', 's', 0.14, 0.24, 3))
-            self.params.append(Parameter('leg_width', 's', 0.01, 0.05, 3))
-            self.params.append(Parameter('seat_height', 's', 0.01, 0.05, 3))
+            self.params.append(Parameter('height', 's', 0.293, 0.43))
+            self.params.append(Parameter('leg_height', 's', 0.14, 0.24))
+            self.params.append(Parameter('leg_width', 's', 0.01, 0.05))
+            self.params.append(Parameter('seat_height', 's', 0.01, 0.05))
             self.params.append(Parameter('num_hbars', 'i', 2, 14))
             self.params.append(Parameter('bottom_bar', 'b'))
         elif shape_name == 'chair':
