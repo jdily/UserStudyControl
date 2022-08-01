@@ -1,7 +1,7 @@
 import os
 from PIL import Image
-from importlib import reload
 import shapegenerator
+from importlib import reload
 
 
 class Controller:
@@ -38,4 +38,3 @@ class Controller:
 
     def get_details(self, shape_name: str, index: int):
         return self.true_images[shape_name][index], self.pred_images[shape_name][index]
-
