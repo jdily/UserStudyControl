@@ -46,7 +46,7 @@ class Chair(Shape):
 
         ## draw curve top
         ## TODO: fix this..
-        xy = (0.01, leg_height+seat_height, seat_width, leg_height+seat_height+arc_radius)
+        xy = (0.01, 1.0-leg_height-seat_height-arc_radius, seat_width, 1.0-leg_height-seat_height)
         self.chord(xy, 180, 360)
         return
 
@@ -58,6 +58,6 @@ class Chair(Shape):
             (index,                         # Integer, specifying the index of the shape
             parameter_vector)               # List of elements, representing the parameter vector
         """
-        self.assign_parameter_vector_to_shape(3, [0.43, 0.35, 0.045, 0.4, 0.4, 0.5])
-        self.assign_parameter_vector_to_shape(4, [0.43, 0.3, 0.15, 0.4, 0.7, 0.5])
+        self.assign_parameter_vector_to_shape(3, [0.43, 0.35, 0.045, 0.4, 0.4, 0.2])
+        self.assign_parameter_vector_to_shape(4, [0.43, 0.3, 0.15, 0.4, 0.7, 0.2])
         return
